@@ -19,5 +19,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [TaskController::class, 'index']);
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
     Route::post('/task', [TaskController::class, 'store']);
-    Route::delete('/task/{task}', [TaskController::class, 'destroy']);
+    Route::delete('/task/{id}', [TaskController::class, 'destroy']);
 });

@@ -27,10 +27,10 @@ class TaskController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-    
-        $task = new Task;
-        $task->name = $request->name;
-        $task->save();
+
+        $request->user()->tasks()->create([
+            'name' => $request->name,
+        ]);
     
         return redirect('/');
     }
@@ -41,9 +41,12 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(Request $request, $id)
     {
-        $task->delete();
+        
+        $this->authorize('destroy', $request);
+
+        $request->delete();
 
         return redirect('/');
     }
