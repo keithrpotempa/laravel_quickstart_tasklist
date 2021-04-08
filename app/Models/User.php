@@ -44,8 +44,8 @@ class User extends Authenticatable
     /**
      * Get all of the tasks for the user.
      */
-    public function tasks()
-    {
-        return $this->hasMany(Task::class);
-    }
+    // public function tasks()
+    // {
+    //     return $this->hasMany(Task::class);
+    // }
 }
