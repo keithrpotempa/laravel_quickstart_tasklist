@@ -43,12 +43,12 @@
             </div>
 
             <div class="panel-body">
-                <table class="table table-striped task-table">
+                <table class="table-auto">
 
                     <!-- Table Headings -->
                     <thead>
                         <th>Task</th>
-                        <th>&nbsp;</th>
+                        <th>Actions</th>
                     </thead>
 
                     <!-- Table Body -->
@@ -67,7 +67,7 @@
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 
-                                        <button>Delete Task</button>
+                                        <button>Delete</button>
                                     </form>
                                 </td>
                             </tr>

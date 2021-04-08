@@ -13,15 +13,11 @@ use App\Http\Controllers\TaskController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [TaskController::class, 'index']);
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
-Route::post('/task', [TaskController::class, 'store']);
-Route::delete('/task/{task}', [TaskController::class, 'destroy']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [TaskController::class, 'index']);
+    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
+    Route::post('/task', [TaskController::class, 'store']);
+    Route::delete('/task/{task}', [TaskController::class, 'destroy']);
+});
