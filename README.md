@@ -9,4 +9,6 @@ It was updated to Laravel 8.
 1. Clone project
 1. `npm install`
 1. `npm run dev`
+1. Create a new DB using PHP myadmin
+1. Store credentials in .env
 1. `php artisan serve`

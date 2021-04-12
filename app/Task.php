@@ -8,6 +8,6 @@ class Task extends Model
 {
     protected $table = 'tasks';
     protected $fillable = [
-        'name',
+        'name', 'completed',
     ];
 }

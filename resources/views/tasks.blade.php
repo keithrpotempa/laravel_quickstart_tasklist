@@ -6,9 +6,7 @@
         </h2>
     </x-slot>
 
-    <!-- Bootstrap Boilerplate... -->
-
-    <div class="panel-body">
+    <div class="container grid justify-items-center my-5">
         <!-- Display Validation Errors -->
         @include('common.errors')
 
@@ -33,22 +31,26 @@
                     </button>
                 </div>
             </div>
+
         </form>
     </div>
 
     @if (count($tasks) > 0)
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="container grid justify-items-center">
+            <div class="text-lg">
                 Current Tasks
             </div>
 
             <div class="panel-body">
-                <table class="table-auto">
+                <table class="table-fixed">
 
                     <!-- Table Headings -->
                     <thead>
-                        <th>Task</th>
-                        <th>Actions</th>
+                        <tr>
+                            <th style="width: 200px;">Task</th>
+                            <th>Complete</th>
+                            <th>Delete</th>
+                        </tr>
                     </thead>
 
                     <!-- Table Body -->
@@ -59,6 +61,16 @@
                                 <!-- Task Name -->
                                 <td class="table-text">
                                     <div>{{ $task->name }}</div>
+                                </td>
+
+                                <!-- Mark as Complete -->
+                                <td>
+                                    <form action="/task/{{ $task->id }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('PATCH') }}
+
+                                        <button>{{ $task->complete ? 'Complete' : 'incomplete' }}</button>
+                                    </form>
                                 </td>
 
                                 <!-- Delete Button -->

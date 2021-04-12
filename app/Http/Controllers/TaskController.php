@@ -35,12 +35,21 @@ class TaskController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function update(Request $request, $id)
+    {
+        $this->authorize('update', $request);
+
+        // $validate = Validator::make($request->toArray(),[
+        //     'name' => 'required',
+        //     'completed' => 'required',
+        // ]);
+        // if($validate->fails()){
+        //     return response($validate->errors(), 400);
+        // }
+        // $request->update($validate->validate());
+        return redirect('/');
+    }
+
     public function destroy(Request $request, $id)
     {
         

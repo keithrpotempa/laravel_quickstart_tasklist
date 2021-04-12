@@ -20,4 +20,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
     Route::post('/task', [TaskController::class, 'store']);
     Route::delete('/task/{id}', [TaskController::class, 'destroy']);
+    Route::patch('/task/{id}', [TaskController::class, 'update']);
 });
