@@ -68,8 +68,7 @@
                                     <form action="/task/{{ $task->id }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('PATCH') }}
-
-                                        <button>{{ $task->complete ? 'Complete' : 'incomplete' }}</button>
+                                        <button>{{ $task->completed ? 'Complete' : 'Incomplete' }}</button>
                                     </form>
                                 </td>
 

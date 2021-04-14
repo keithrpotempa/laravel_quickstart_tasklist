@@ -37,25 +37,19 @@ class TaskController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->authorize('update', $request);
-
-        // $validate = Validator::make($request->toArray(),[
-        //     'name' => 'required',
-        //     'completed' => 'required',
-        // ]);
-        // if($validate->fails()){
-        //     return response($validate->errors(), 400);
-        // }
-        // $request->update($validate->validate());
+        // $this->authorize('update', $request);
+        $task = Task::findOrFail($id);
+        $task->completed = !$task->completed;
+        $task->save();
         return redirect('/');
     }
 
     public function destroy(Request $request, $id)
     {
-        
-        $this->authorize('destroy', $request);
+        $task = Task::findOrFail($id);
+        // $this->authorize('destroy', $task);
 
-        $request->delete();
+        $task->delete();
 
         return redirect('/');
     }
